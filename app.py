@@ -45,8 +45,7 @@ def getSumry(db, user_id):
 
 def getUsersStoks(db, user, order, conditions):
     return db.execute(
-        f"SELECT fecha, simbolo, precio, transaccionID, cantidadTransada, cantidadRestante,balance,total_transado FROM Transacciones WHERE userID = ? {
-            conditions} ORDER BY {order}",
+        f"SELECT fecha, simbolo, precio, transaccionID, cantidadTransada, cantidadRestante,balance,total_transado FROM Transacciones WHERE userID = ? {conditions} ORDER BY {order}",
         user,
     )
 
