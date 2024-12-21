@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+{% if requesting %}
+<section>
+    <p>A share of {{ shareInfo["name"]}} ({{shareInfo["symbol"]}}) costs {{shareInfo["price"] | usd}}</p>
+</section>
+<form action="/quote" method="GET">
+    <input type="submit" class="btn btn-primary" value="Go Back">
+</form>
+{% else %}
+<form action="/quote" method="post">
+    <input type="text" name="symbol" placeholder="TIKET">
+    <button type="submit" class="btn btn-primary" value="Quote">Quote</button>
+</form>
+{% endif %}
+{% endblock %}

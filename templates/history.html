@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>TIKET</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for share in shares %}
+                <tr>
+                  <td>{{share['fecha']}}</td>
+                  <td>{{share['simbolo']}}</td>
+                  <td>{{share['cantidadTransada']}}</td>
+                  <td>{{ share['precio'] | usd }}</td>
+                  <td>{{(share['cantidadTransada']*share['precio'])|usd}}</td>
+                  <td>{{share['balance']}}</td>
+                </tr>
+              {% endfor %}
+                <tr>
+                    <th colspan="4"></th>
+                    <th>Total Profit</th>
+                    <td>{{cash|usd}}</td>
+                </tr>
+                <tr>
+                    <th colspan="4"></th>
+                    <th>Total Cash</th>
+                    <td>{{cash|usd}}</td>
+                </tr>
+            </tbody>
+          </table>
+{% endblock %}

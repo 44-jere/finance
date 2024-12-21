@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+<section>
+    <p>A share of {{ shareInfo["name"]}} ({{shareInfo["symbol"]}}) costs {{shareInfo["price"] | usd}}</p>
+</section>
+<form action="/quote" method="GET">
+    <input type="submit" class="btn btn-primary" value="Go Back">
+</form>
+{% endblock %}

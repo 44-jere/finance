@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+
+{% block main %}
+{% if transactionStatus %}
+    <div>
+        transaction successfully
+    </div>
+    <section>
+        you bought {{quantity}} from {{shareinfo["name"]}} at {{shareinfo["price"]}} with a total of {{shareinfo["price"]*quantity}}</section>
+    </section>
+    <form action="/buy" method="GET">
+        <input type="submit" class="btn btn-primary" value="Go Back">
+    </form>
+{% else %}
+<form action="/buy" method="post">
+    <input type="text" name="symbol" placeholder="TIKET">
+    <input type="number" name="shares" placeholder="Shares">
+    <button type="submit" class="btn btn-primary">buy</button>
+</form>
+{% endif %}
+{% endblock %}

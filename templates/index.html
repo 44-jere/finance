@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portafolio
+{% endblock %}
+
+{% block main %}
+<h2>Resume</h2>
+<table class="table tablestriped">
+  <thead>
+    <tr>
+      <th>TIKET</th>
+      <th>Shares</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for sum in sumary %}
+      <tr>
+          <td>{{sum['simbolo']}}</td>
+          <td>{{sum['acciones_total'] }}</td>
+          <td>{{sum['inversion_total']|usd}}</td>
+      </tr>
+    {% endfor %}
+      <tr>
+          <th colspan="1"></th>
+          <th>Total Cash</th>
+          <td>{{cash|usd}}</td>
+      </tr>
+      <tr>
+          <th colspan="1"></th>
+          <th>Total Invested</th>
+          <td>{{invested|usd}}</td>
+      </tr>
+      <tr>
+          <th colspan="1"></th>
+          <th>Profit</th>
+          <td>{{(cash+invested)|usd}}</td>
+      </tr>
+  </tbody>
+</table>
+<h2>Detail</h2>
+<table class="table tablestriped">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>TIKET</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for share in shares %}
+        <tr>
+            <td>{{share['fecha']}}</td>
+            <td>{{share['simbolo']}}</td>
+            <td>{{share['cantidadRestante'] }}</td>
+            <td>{{ share['precio'] | usd}}</td>
+            <td>{{(share['cantidadRestante']*share['precio'])|usd}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

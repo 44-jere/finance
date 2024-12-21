@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+<form action="/sell" method="post">
+  <select name="symbol">
+    <option value="none">none</option>
+    {%for tiket in sumary %}
+    <option value="{{tiket['simbolo']}}">{{tiket['simbolo']}}</option>
+    {% endfor %}
+  </select>
+  <input type = "number" min = 1 name="shares">
+  <button type="submit" class="btn btn-primary">sell</button>
+</form>
+        <!-- <table class="table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>TIKET</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for share in shares %}
+                <tr>
+                  <form action="/sell" method="post">
+                    <td>{{share['fecha']}}</td>
+                    <td>{{share['simbolo']}}</td>
+                    <td>{{share['cantidadRestante']}}</td>
+                    <td>{{share['precio']}}</td>
+                    <td>{{share['precio']*share['cantidadRestante']}}</td>
+                    <td><input type = "number" min = 1 max = {{share['cantidadRestante']}} name="size"></td>
+                    <input type="hidden" name="shares" value="{{share['simbolo']}}">
+                    <input type="hidden" name="id" value={{share["transaccionID"]}}>
+                    <td><input type = "submit" value = 'sell'></td>
+                  </form>
+                </tr>
+              {% endfor %}
+                <tr>
+                    <th colspan="5"></th>
+                    <th>Total Invested</th>
+                    <td>{{invested}}</td>
+                </tr>
+                <tr>
+                    <th colspan="5"></th>
+                    <th>Total Cash</th>
+                    <td>{{cash}}</td>
+                </tr>
+                <tr>
+            </tbody>
+          </table> -->
+
+{% endblock %}
