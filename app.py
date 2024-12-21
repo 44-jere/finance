@@ -349,8 +349,7 @@ def sell():
             session["user_id"]
         )
 
-        flash(f"Sold {transaction} of {simbolo} for {
-              usd(ticketInfo['price'])} each with a total of {usd(ticketInfo['price']*transaction)}")
+        flash(f"Sold {transaction} of {simbolo} for {usd(ticketInfo['price'])} each with a total of {usd(ticketInfo['price']*transaction)}")
         return redirect("/")
 
     return renderHistory(
