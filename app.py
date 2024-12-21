@@ -145,7 +145,7 @@ def buy():
                 shareInfo["price"],
                 shareInfo["price"]*shares
             )
-            flash(f"Bought {shares} of {shareInfo["symbol"]} for {shareInfo["price"]}, Updated cash: {usd(balance)}")
+            flash(f"Bought {shares} of {shareInfo['symbol']} for {shareInfo['price']}, Updated cash: {usd(balance)}")
             return redirect("/")
     else:
         return render_template("buy.html", transactionStatus=False)
